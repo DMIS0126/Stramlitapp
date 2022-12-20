@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.write('Hello World')
+st.title('튜링 콘텐츠팀 블로그')
 
 st.header('st.button')
 
