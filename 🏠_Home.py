@@ -1,9 +1,24 @@
 import streamlit as st
-
+st.set_page_config(page_title="TuringContent", page_icon="🏠")
 def intro():
     import streamlit as st
+    from PIL import Image
+    image = Image.open('Untitled.png')
 
-    st.write("# 튜링 콘텐츠팀 블로그")
+    col1, col2 = st.columns([1,5], gap="small")
+    with col1:
+        st.image(image, width=100)
+    with col2:
+        st.write("# 튜링 콘텐츠팀 블로그")
+
+    st.markdown("""
+    튜링 콘텐츠팀 블로그입니다.\\
+    앞으로 수학, 교육, 콘텐츠 데이터와 관련된 내용을 추가할 예정입니다.\\
+    많은 관심 부탁드립니다.
+    """)
+
+
+
 #
 #
 #     st.markdown(
@@ -73,102 +88,126 @@ def intro():
 #     """
 #     )
 
-def mapping_demo():
+def Info():
     import streamlit as st
-    import pandas as pd
-    import pydeck as pdk
+    # import pandas as pd
+    # import pydeck as pdk
+    from PIL import Image
+    image = Image.open('Untitled.png')
 
-    from urllib.error import URLError
 
-    st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
-    st.write(
-        """
-        This demo shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data.
-"""
-    )
+    col1, col2 = st.columns([1, 5], gap="small")
+    with col1:
+        st.image(image, width=100)
+    with col2:
+        st.write("# 튜링 콘텐츠팀 블로그")
 
-    @st.cache
-    def from_data_file(filename):
-        url = (
-            "http://raw.githubusercontent.com/streamlit/"
-            "example-data/master/hello/v1/%s" % filename
-        )
-        return pd.read_json(url)
 
-    try:
-        ALL_LAYERS = {
-            "Bike Rentals": pdk.Layer(
-                "HexagonLayer",
-                data=from_data_file("bike_rental_stats.json"),
-                get_position=["lon", "lat"],
-                radius=200,
-                elevation_scale=4,
-                elevation_range=[0, 1000],
-                extruded=True,
-            ),
-            "Bart Stop Exits": pdk.Layer(
-                "ScatterplotLayer",
-                data=from_data_file("bart_stop_stats.json"),
-                get_position=["lon", "lat"],
-                get_color=[200, 30, 0, 160],
-                get_radius="[exits]",
-                radius_scale=0.05,
-            ),
-            "Bart Stop Names": pdk.Layer(
-                "TextLayer",
-                data=from_data_file("bart_stop_stats.json"),
-                get_position=["lon", "lat"],
-                get_text="name",
-                get_color=[0, 0, 0, 200],
-                get_size=15,
-                get_alignment_baseline="'bottom'",
-            ),
-            "Outbound Flow": pdk.Layer(
-                "ArcLayer",
-                data=from_data_file("bart_path_stats.json"),
-                get_source_position=["lon", "lat"],
-                get_target_position=["lon2", "lat2"],
-                get_source_color=[200, 30, 0, 160],
-                get_target_color=[200, 30, 0, 160],
-                auto_highlight=True,
-                width_scale=0.0001,
-                get_width="outbound",
-                width_min_pixels=3,
-                width_max_pixels=30,
-            ),
-        }
-        st.sidebar.markdown("### Map Layers")
-        selected_layers = [
-            layer
-            for layer_name, layer in ALL_LAYERS.items()
-            if st.sidebar.checkbox(layer_name, True)
-        ]
-        if selected_layers:
-            st.pydeck_chart(
-                pdk.Deck(
-                    map_style="mapbox://styles/mapbox/light-v9",
-                    initial_view_state={
-                        "latitude": 37.76,
-                        "longitude": -122.4,
-                        "zoom": 11,
-                        "pitch": 50,
-                    },
-                    layers=selected_layers,
-                )
-            )
-        else:
-            st.error("Please choose at least one layer above.")
-    except URLError as e:
-        st.error(
-            """
-            **This demo requires internet access.**
+    tab1, tab2, tab3 = st.tabs(["Info", "Vision", "Contact"])
 
-            Connection error: %s
-        """
-            % e.reason
-        )
+    with tab1:
+        st.header("A cat")
+        st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+
+    with tab2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+    with tab3:
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+#
+#     from urllib.error import URLError
+#
+#     st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
+#     st.write(
+#         """
+#         This demo shows how to use
+# [`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
+# to display geospatial data.
+# """
+#     )
+#
+#     @st.cache
+#     def from_data_file(filename):
+#         url = (
+#             "http://raw.githubusercontent.com/streamlit/"
+#             "example-data/master/hello/v1/%s" % filename
+#         )
+#         return pd.read_json(url)
+#
+#     try:
+#         ALL_LAYERS = {
+#             "Bike Rentals": pdk.Layer(
+#                 "HexagonLayer",
+#                 data=from_data_file("bike_rental_stats.json"),
+#                 get_position=["lon", "lat"],
+#                 radius=200,
+#                 elevation_scale=4,
+#                 elevation_range=[0, 1000],
+#                 extruded=True,
+#             ),
+#             "Bart Stop Exits": pdk.Layer(
+#                 "ScatterplotLayer",
+#                 data=from_data_file("bart_stop_stats.json"),
+#                 get_position=["lon", "lat"],
+#                 get_color=[200, 30, 0, 160],
+#                 get_radius="[exits]",
+#                 radius_scale=0.05,
+#             ),
+#             "Bart Stop Names": pdk.Layer(
+#                 "TextLayer",
+#                 data=from_data_file("bart_stop_stats.json"),
+#                 get_position=["lon", "lat"],
+#                 get_text="name",
+#                 get_color=[0, 0, 0, 200],
+#                 get_size=15,
+#                 get_alignment_baseline="'bottom'",
+#             ),
+#             "Outbound Flow": pdk.Layer(
+#                 "ArcLayer",
+#                 data=from_data_file("bart_path_stats.json"),
+#                 get_source_position=["lon", "lat"],
+#                 get_target_position=["lon2", "lat2"],
+#                 get_source_color=[200, 30, 0, 160],
+#                 get_target_color=[200, 30, 0, 160],
+#                 auto_highlight=True,
+#                 width_scale=0.0001,
+#                 get_width="outbound",
+#                 width_min_pixels=3,
+#                 width_max_pixels=30,
+#             ),
+#         }
+#         st.sidebar.markdown("### Map Layers")
+#         selected_layers = [
+#             layer
+#             for layer_name, layer in ALL_LAYERS.items()
+#             if st.sidebar.checkbox(layer_name, True)
+#         ]
+#         if selected_layers:
+#             st.pydeck_chart(
+#                 pdk.Deck(
+#                     map_style="mapbox://styles/mapbox/light-v9",
+#                     initial_view_state={
+#                         "latitude": 37.76,
+#                         "longitude": -122.4,
+#                         "zoom": 11,
+#                         "pitch": 50,
+#                     },
+#                     layers=selected_layers,
+#                 )
+#             )
+#         else:
+#             st.error("Please choose at least one layer above.")
+#     except URLError as e:
+#         st.error(
+#             """
+#             **This demo requires internet access.**
+#
+#             Connection error: %s
+#         """
+#             % e.reason
+#         )
 
 def plotting_demo():
     import streamlit as st
@@ -265,7 +304,7 @@ def data_frame_demo():
 
 page_names_to_funcs = {
     "안녕하세요" : intro,
-    "반갑습니다": intro,
+    "반갑습니다": Info,
     "또와주세요": intro,
     "감사합니다": intro
 }

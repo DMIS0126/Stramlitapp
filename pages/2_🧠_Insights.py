@@ -2,12 +2,22 @@ import streamlit as st
 import time
 import numpy as np
 
+import streamlit as st
 
 
 
+st.set_page_config(page_title="Insights", page_icon="🧠")
 st.write("# 튜링 콘텐츠팀 블로그입니다! 👋")
 
 
+
+with st.sidebar:
+    with st.echo():
+        st.write("This code will be printed to the sidebar.")
+
+    with st.spinner("Loading..."):
+        time.sleep(0)
+    st.success("Done!")
 st.markdown(
     """
     ### 0️⃣ 시작
