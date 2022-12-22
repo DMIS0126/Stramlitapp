@@ -3,14 +3,16 @@ import pandas as pd
 import pydeck as pdk
 from urllib.error import URLError
 
-st.set_page_config(page_title="Math", page_icon="📖")
+st.set_page_config(page_title="TuringContent-Math", page_icon="📖")
 
-st.markdown("# Math")
+st.markdown("# 📖 Math")
 
 
 option = st.selectbox(
-    '글을 선택해주세요.',
-    ('문제 생산 자동화 (2022.12.20)', '아토믹 개념 주소화 (2022.12.23)',))
+    ' ',
+    ('글을 선택해주세요.','문제 생산 자동화 (2022.12.20)', '아토믹 개념 주소화 (2022.12.23)',))
+if option == ' ':
+    st.markdown("""""")
 if option == '문제 생산 자동화 (2022.12.20)':
     st.markdown("""
     ## 🏭문제 생산 자동화

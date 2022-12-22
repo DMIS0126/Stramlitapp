@@ -6,8 +6,8 @@ import streamlit as st
 
 
 
-st.set_page_config(page_title="Insights", page_icon="🧠")
-st.write("# 튜링 콘텐츠팀 블로그입니다! 👋")
+st.set_page_config(page_title="TuringContent-Insights", page_icon="🧠")
+st.markdown("# 🧠 Insights")
 
 
 
