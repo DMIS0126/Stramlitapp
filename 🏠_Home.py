@@ -2,12 +2,17 @@ import streamlit as st
 st.set_page_config(page_title="TuringContent-Home", page_icon="🏠")
 import numpy as np
 
+import streamlit as st
+import numpy as np
+
+# This code is different for each deployed app.
 CURRENT_THEME = "dark"
 IS_DARK_THEME = True
 EXPANDER_TEXT = """
     This is Streamlit's default *Dark* theme. You can enable it in the app menu
     (☰ -> Settings -> Theme) or by copying the following code to
     `.streamlit/config.toml`:
+
     ```python
     [theme]
     base="dark"
