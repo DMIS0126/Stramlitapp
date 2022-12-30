@@ -1,8 +1,26 @@
 import streamlit as st
 st.set_page_config(page_title="TuringContent-Home", page_icon="🏠")
+import numpy as np
+
+CURRENT_THEME = "dark"
+IS_DARK_THEME = True
+EXPANDER_TEXT = """
+    This is Streamlit's default *Dark* theme. You can enable it in the app menu
+    (☰ -> Settings -> Theme) or by copying the following code to
+    `.streamlit/config.toml`:
+    ```python
+    [theme]
+    base="dark"
+    primaryColor="#835eed"
+    backgroundColor = "#0e1117"
+    secondaryBackgroundColor = "#31333F"
+    textColor = "#fafafa"
+    font = "sans serif"
+    ```
+    """
+
 from PIL import Image
 home_image = Image.open('23.png')
-st.image(home_image)
 st.markdown("""
             # Turing
             ## :violet[Reinvent Education with Technology]
