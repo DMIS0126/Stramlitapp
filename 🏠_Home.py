@@ -4,8 +4,21 @@ from PIL import Image
 home_image = Image.open('23.png')
 st.image(home_image)
 st.markdown("""
-            # 튜링 콘텐츠팀 블로그입니다.
+            # Turing
+            ## :violet[Reinvent Education with Technology]
+            ---
             """)
+
+st.markdown("""
+            ### Keyword
+#### :violet[🎛 수학 전문  🎛 Interactive 🎛 수험서비스  🎛  New Technology]
+---
+### Brand Slogan
+
+### :violet[수학이 고민될 때, 수학대왕]
+""")
+
+
 def intro():
     import streamlit as st
 
